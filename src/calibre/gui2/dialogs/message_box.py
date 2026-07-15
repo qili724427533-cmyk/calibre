@@ -42,21 +42,21 @@ class Icon(QWidget):
         QWidget.__init__(self, parent)
         self.pixmap = None
         self.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-        self.size = size or 64
+        self.icon_size = size or 64
 
     def set_icon(self, qicon):
-        self.pixmap = qicon.pixmap(self.size, self.size)
+        self.pixmap = qicon.pixmap(self.icon_size, self.icon_size)
         self.update()
 
     def sizeHint(self):
-        return QSize(self.size, self.size)
+        return QSize(self.icon_size, self.icon_size)
 
     def paintEvent(self, a0):
         if self.pixmap is not None:
-            x = (self.width() - self.size) // 2
-            y = (self.height() - self.size) // 2
+            x = (self.width() - self.icon_size) // 2
+            y = (self.height() - self.icon_size) // 2
             p = QPainter(self)
-            p.drawPixmap(x, y, self.size, self.size, self.pixmap)
+            p.drawPixmap(x, y, self.icon_size, self.icon_size, self.pixmap)
 
 
 class MessageBox(QDialog):  # {{{
